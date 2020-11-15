@@ -6,6 +6,27 @@ defmodule RedirexWeb.PageController do
     render(conn, "index.html")
   end
 
+  def create(conn, %{"url" => url}) do
+    conn =
+      conn
+      |> assign(:url, url)
+
+    Redirex.shortens(url)
+    |> case do
+      {:ok, code} ->
+        {:ok, host} = Redirex.Store.host()
+
+        conn
+        |> assign(:result, "#{host}/#{code}")
+        |> render("index.html")
+
+      {:error, err} ->
+        conn
+        |> put_flash(:error, inspect(err))
+        |> render("index.html")
+    end
+  end
+
   def open(conn, %{"slug" => slug}) do
     case Redirex.redirect(slug) do
       {:ok, url} ->

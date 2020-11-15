@@ -17,6 +17,7 @@ defmodule RedirexWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    post "/", PageController, :create
 
     get "/:slug", PageController, :open
   end

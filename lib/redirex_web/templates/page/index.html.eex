@@ -2,15 +2,12 @@
 
 <section class="container-fluid">
   <form action="/" method="post">
+    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+
     <div class="form-group row align-items-center">
       <label for="url" class="">URL to shorten:</label>
       <input type="url" name="url" id="url" class="form-control" />
       <small id="urlHelp" class="form-text text-muted ">Starts with http:// or https://.</small>
-    </div>
-
-    <div class="form-group row align-items-center">
-      <label for="result" class="">Custom result:</label>
-      <input type="text" name="result" id="result" class="form-control" />
     </div>
 
     <div class="row">
@@ -18,3 +15,11 @@
     </div>
   </form>
 </section>
+
+<%= if assigns[:result] do %>
+  <section class="container-fluid">
+  <p class="row align-items-center">
+    Created redirect for <%= @url %> as  <span class="result-link"><%= @result %></span>
+  </p>
+  </section>
+<% end %>
