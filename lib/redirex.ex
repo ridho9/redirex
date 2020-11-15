@@ -11,9 +11,8 @@ defmodule Redirex do
     if ValidUrl.validate(url) do
       unique_string = Redirex.Shortener.generate_random_unique(8)
       Redirex.Store.set(unique_string, url)
-      {:ok, host} = Redirex.Store.host()
 
-      {:ok, "#{host}/#{unique_string}"}
+      {:ok, "#{unique_string}"}
     else
       {:error, "invalid url"}
     end

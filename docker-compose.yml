@@ -1,0 +1,26 @@
+version: "2.0"
+services:
+    app:
+        build: .
+        # image: rid9/hibiki-elixir:__TAG__
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.redirex.rule=Host(`r.kryk.io`)"
+            - "traefik.http.routers.redirex.entrypoints=websecure"
+            - "traefik.http.routers.redirex.tls.certresolver=myresolver"
+            - "traefik.docker.network=global"
+        env_file:
+            - prod.env
+        ports:
+            - 80:4000
+        networks:
+            default:
+            global:
+                aliases:
+                    - redirex
+        volumes:
+            - ./data:/app/data
+
+networks:
+    global:
+        external: true

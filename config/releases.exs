@@ -2,7 +2,16 @@
 # from environment variables. You can also hardcode secrets,
 # although such is generally not recommended and you have to
 # remember to add this file to your .gitignore.
-use Mix.Config
+import Config
+
+host = System.get_env("HOST") || raise "missing HOST"
+
+config :redirex, RedirexWeb.Endpoint,
+  url: [host: host, port: 80],
+  cache_static_manifest: "priv/static/cache_manifest.json"
+
+config :redirex,
+  host: host
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
@@ -13,7 +22,7 @@ secret_key_base =
 
 config :redirex, RedirexWeb.Endpoint,
   http: [
-    port: String.to_integer(System.get_env("PORT") || "4000"),
+    port: 4000,
     transport_options: [socket_opts: [:inet6]]
   ],
   secret_key_base: secret_key_base
