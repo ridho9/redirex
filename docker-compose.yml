@@ -5,7 +5,7 @@ services:
         # image: rid9/redirex:__TAG__
         labels:
             - "traefik.enable=true"
-            - "traefik.http.routers.redirex.rule=Host(`r.kryk.io`)"
+            - "traefik.http.routers.redirex.rule=Host(`s.kryk.io`)"
             - "traefik.http.routers.redirex.entrypoints=web"
             - "traefik.docker.network=global"
         env_file:
