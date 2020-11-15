@@ -1,8 +1,8 @@
 version: "2.0"
 services:
     app:
-        build: .
-        # image: rid9/hibiki-elixir:__TAG__
+        # build: .
+        image: rid9/redirex:__TAG__
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.redirex.rule=Host(`r.kryk.io`)"
