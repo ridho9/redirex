@@ -1,0 +1,20 @@
+<h1>Redirex</h1>
+
+<section class="container-fluid">
+  <form action="/" method="post">
+    <div class="form-group row align-items-center">
+      <label for="url" class="">URL to shorten:</label>
+      <input type="url" name="url" id="url" class="form-control" />
+      <small id="urlHelp" class="form-text text-muted ">Starts with http:// or https://.</small>
+    </div>
+
+    <div class="form-group row align-items-center">
+      <label for="result" class="">Custom result:</label>
+      <input type="text" name="result" id="result" class="form-control" />
+    </div>
+
+    <div class="row">
+      <button type="submit" class="btn btn-primary">Shorten</button>
+    </div>
+  </form>
+</section>
