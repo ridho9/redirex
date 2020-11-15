@@ -6,9 +6,7 @@ services:
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.redirex.rule=Host(`r.kryk.io`)"
-            - "traefik.http.routers.redirex.rule=Host(`r.ridho.dev`)"
-            - "traefik.http.routers.redirex.entrypoints=websecure"
-            - "traefik.http.routers.redirex.tls.certresolver=myresolver"
+            - "traefik.http.routers.redirex.entrypoints=web"
             - "traefik.docker.network=global"
         env_file:
             - prod.env
