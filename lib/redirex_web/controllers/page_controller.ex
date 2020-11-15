@@ -11,7 +11,7 @@ defmodule RedirexWeb.PageController do
       {:ok, url} ->
         conn
         |> put_resp_header("Location", url)
-        |> send_resp(300, "yeet")
+        |> send_resp(301, "yeet")
 
       {:error, :not_found} ->
         conn
